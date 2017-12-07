@@ -1,2 +1,29 @@
-name: user-v1-dev-4
-restApi.swagger.title: renren
+spring:
+  cloud:
+    stream:
+      bindings:
+        sleuth:
+          binder: kafkaCommon
+        springCloudBusInput:
+          binder: kafkaCommon
+        springCloudBusOutput:
+          binder: kafkaCommon
+      binders:
+        kafkaCommon:
+          type: kafka
+          defaultCandidate: false
+          environment:
+            spring.cloud.stream.kafka.binder:
+              brokers: 172.18.115.134,172.18.115.135,172.18.115.136
+              zkNodes: 172.18.115.134,172.18.115.135,172.18.115.136
+  sleuth:
+    sampler:
+      percentage: 1.0
+server:
+  port: 8091
+restApi:
+  swagger:
+    title: springdemo-用户webapi
+    version: 1
+    description: 用户webapi
+spring.sleuth.rxjava.schedulers.hook.enabled: false
