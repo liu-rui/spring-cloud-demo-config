@@ -17,9 +17,6 @@ spring:
             spring.cloud.stream.kafka.binder:
               brokers: 172.18.115.134,172.18.115.135,172.18.115.136
               zkNodes: 172.18.115.134,172.18.115.135,172.18.115.136
-  sleuth:
-    sampler:
-      percentage: 1.0
 server:
   port: 8091
 restApi:
