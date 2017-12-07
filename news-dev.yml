@@ -1,1 +1,27 @@
 name: news-dev
+spring:
+  cloud:
+    stream:
+      bindings:
+        sleuth:
+          binder: kafkaCommon
+        springCloudBusInput:
+          binder: kafkaCommon
+        springCloudBusOutput:
+          binder: kafkaCommon
+      binders:
+        kafkaCommon:
+          type: kafka
+          defaultCandidate: false
+          environment:
+            spring.cloud.stream.kafka.binder:
+              brokers: 172.18.115.134,172.18.115.135,172.18.115.136
+              zkNodes: 172.18.115.134,172.18.115.135,172.18.115.136
+server:
+  port: 8201
+restApi:
+  swagger:
+    title: springdemo-新闻webapi
+    version: 1
+    description: 新闻webapi 
+spring.sleuth.rxjava.schedulers.hook.enabled: false
